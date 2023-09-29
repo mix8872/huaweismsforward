@@ -1,4 +1,4 @@
----
+version: '3'
 services:
   php-cli:
     build:
@@ -8,7 +8,6 @@ services:
     container_name: "phpcli-huawei-sms"
     user: www
     command: sh -c "composer update && php index.php"
-#    command: sh -c "ls -lah /var/www/html"
     volumes:
       - ../:/var/www/html
       - ./docker-oc-php.ini:/usr/local/etc/php/conf.d/docker-oc-php.ini
