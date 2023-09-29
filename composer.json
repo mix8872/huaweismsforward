@@ -1,0 +1,39 @@
+{
+  "name": "mix8872/huaweismsforward",
+  "description": "Get new sms from huawei modem and put them to telegram",
+  "type": "project",
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "Michael",
+      "email": "mix8872@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "keywords": [
+    "huawei",
+    "telegram",
+    "E3372",
+    "sms",
+    "192.168.8.1",
+    "modem"
+  ],
+  "require": {
+    "php": "^8.1",
+    "spatie/array-to-xml": "*",
+    "vlucas/phpdotenv": "^5.5"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "config": {
+    "preferred-install": "dist",
+    "allow-plugins": {
+      "composer/installers": true
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "Classes\\": "classes/"
+    }
+  }
+}
