@@ -189,9 +189,9 @@ class ModemProcessor
      * @param string $from
      * @param string $message
      * @param string $date
-     * @return SimpleXMLElement
+     * @return mixed
      */
-    protected function sendTgMsg(string $from, string $message, string $date): SimpleXMLElement
+    protected function sendTgMsg(string $from, string $message, string $date): mixed
     {
         $this->headers[] = 'Content-Type: application/json';
         $this->url = "https://api.telegram.org/bot{$_SERVER['TG_TOKEN']}/sendMessage";
