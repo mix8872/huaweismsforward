@@ -124,11 +124,15 @@ class ModemProcessor
             $count++;
             try {
                 echo "New message from {$message->Phone} at {$message->Date}";
-                $this->sendTgMsg((string)$message->Phone, (string)$message->Content, (string)$message->Date);
+                $result = $this->sendTgMsg((string)$message->Phone, (string)$message->Content, (string)$message->Date);
+                $result = json_decode($result, true);
+                if (!$result['ok']) {
+                    throw new Exception($result['description']);
+                }
                 $this->setRead((int)$message->Index);
                 echo " - \e[0;32mSuccess\e[0m" . PHP_EOL;
             } catch (Exception $e) {
-                echo " - \e[0;31mFail\e[0m" . PHP_EOL;
+                echo " - \e[0;31mFail\e[0m" . $e->getMessage() . PHP_EOL;
             }
         }
 
@@ -200,7 +204,7 @@ class ModemProcessor
         $text = "*$from* ($date)\n  ";
         $text .= "$message";
 
-        $text = str_replace(['+', '(', ')', '-'], ['\+', '\(', '\)', '\-'], $text);
+        $text = str_replace(['+', '(', ')', '-', '.'], ['\+', '\(', '\)', '\-', '\.'], $text);
 
         return $this->request(json_encode([
             'chat_id' => (int)$_SERVER['CHAT_ID'],
