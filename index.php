@@ -12,6 +12,5 @@ $dotenv->required([
     'CHAT_ID'
 ]);
 
-$interface = new ModemProcessor($_SERVER['MODEM_API_ADDR']);
-
-$interface->processSms();
+$processor = new ModemProcessor($_SERVER['MODEM_API_ADDR']);
+$processor->processSms();
