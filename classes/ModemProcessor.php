@@ -204,7 +204,7 @@ class ModemProcessor
         $text = "*$from* ($date)\n  ";
         $text .= "$message";
 
-        $text = str_replace(['+', '(', ')', '-', '.'], ['\+', '\(', '\)', '\-', '\.'], $text);
+        $text = str_replace(['+', '(', ')', '-', '.', '#'], ['\+', '\(', '\)', '\-', '\.', '\#'], $text);
 
         return $this->request(json_encode([
             'chat_id' => (int)$_SERVER['CHAT_ID'],
